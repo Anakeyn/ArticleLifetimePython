@@ -113,10 +113,6 @@ dfAMPageViews.to_csv("dfAMPageViews.csv", sep=";", index=False)  #séparateur ;
 # Fonction pour récupérer les distributions sur un numéro de période et 
 # un nombre de jour 
 ############################################################################
-
-
-
-
 def getMyDistribution(myPageViews, myArticles, myNumPeriode,  myLastDate, myNbrOfDays=30, myTestType="AM"):
     '''
     En ENTREE :
@@ -163,15 +159,21 @@ def getMyDistribution(myPageViews, myArticles, myNumPeriode,  myLastDate, myNbrO
     return dfThisPeriodPV  #ThisPeriodPV, 
 
 #/getMyDistribution
-help(getMyDistribution) #test du help
+#help(getMyDistribution) #test du help
 
+
+
+
+############################################################################
+# Pour tous les mois
+############################################################################
 lastDate = dfPageViews.iloc[len(dfPageViews.index)-1]['date'] #dernière date dans les pages vues
-
-
 
 ############################################################################
 # Pour le mois 1
 ############################################################################
+
+
 myMonthNumber = 1
 dfAMThisMonthPV  = getMyDistribution(myPageViews=dfAMPageViews, 
                                        myArticles=myArticles, 
@@ -365,7 +367,7 @@ fig.savefig("AM-sup0-SampleSize.png", bbox_inches="tight", dpi=600)
 
 
 ##################################################################################
-# vérifions en calculant l'intervalle de confiance à 95% sur une propotion
+# vérifions en calculant l'intervalle de confiance à 95% sur une proportion
 # avec les données observées.
 dfAMPValue['prop'] = dfAMPValue.apply(lambda row: row.myNotNull / row.myNotNas, axis=1)  #proportion 
 #Intervalle de confiance à 95%
